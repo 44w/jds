@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDS - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', 'Rajdhani', 'Exo 2', Arial, sans-serif;
+            background: #1a1a1a url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxY6I4AAAAAElFTkSuQmCC') repeat;
+            color: #e0e0e0;
+        }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border-left: 2px solid #444;
+            border-right: 2px solid #444;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #4a4a4a 0%, #2a2a2a 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff6600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+        }
+
+        nav {
+            background: #333;
+            padding: 0;
+            border-bottom: 2px solid #ff6600;
+            box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            border-right: 1px solid #555;
+        }
+
+        nav ul li:last-child {
+            border-right: none;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 30px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            background: linear-gradient(to bottom, #444 0%, #333 100%);
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            color: #fff;
+        }
+
+        .content {
+            padding: 30px 40px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .welcome-section {
+            background: #2a2a2a;
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .welcome-section h1 {
+            color: #ff6600;
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .welcome-section p {
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .featured-image {
+            text-align: center;
+            margin: 30px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            border: 3px solid #ff6600;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+            max-width: 800px;
+        }
+
+        .featured-title {
+            color: #ff6600;
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .title-divider {
+            width: 100%;
+            height: 2px;
+            background: #ff6600;
+            margin-bottom: 20px;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .video-container {
+            text-align: center;
+            margin: 30px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            border: 3px solid #ff6600;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+            max-width: 800px;
+        }
+
+        .video-container iframe {
+            border: 2px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            max-width: 100%;
+        }
+
+        .video-caption {
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        .info-box {
+            background: linear-gradient(to bottom, #333 0%, #222 100%);
+            border: 2px solid #555;
+            border-radius: 5px;
+            padding: 25px 30px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .info-box h2 {
+            color: #ff6600;
+            font-size: 24px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .info-box p {
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        footer {
+            background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid #ff6600;
+            margin-top: 40px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border: 1px solid #ff8533;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
+            box-shadow: 0 5px 12px rgba(255, 102, 0, 0.4);
+            transform: translateY(-2px);
+        }
+    </style>
+    
+    <!-- Google Fonts for Gamer Aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/jds-logo.gif" alt="JDS Logo" class="logo">
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="big-homo.html">Big Homo</a></li>
+                <li><a href="big-b.html">Big B</a></li>
+                <li><a href="big-daddy.html">Big Daddy</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div class="featured-image">
+                <h2 class="featured-title">What Da Dog Doin?</h2>
+                <div class="title-divider"></div>
+                <img src="images/juice-pic.png" alt="Featured Juice Picture">
+            </div>
+
+            <div class="video-container">
+                <!-- Embed your YouTube video here -->
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/kkMJb0nVsDY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="video-caption">average dravec user</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Brando Industries. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
