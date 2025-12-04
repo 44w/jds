@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juicedatshit</title>
+    <title>juicedatshit - [PAGE NAME]</title>
     <link rel="icon" type="image/png" href="images/small-logo.png">
     <style>
         * {
@@ -18,103 +18,6 @@
             color: #e0e0e0;
             position: relative;
             overflow-x: hidden;
-        }
-
-        .welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: pulseBackground 4s ease-in-out infinite;
-        }
-
-        @keyframes pulseBackground {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .welcome-content {
-            text-align: center;
-            padding: 60px 40px;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            animation: none;
-        }
-
-        @keyframes welcomeGlow {
-            0%, 100% { box-shadow: 0 0 40px rgba(255, 102, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.5); }
-            50% { box-shadow: 0 0 60px rgba(255, 102, 0, 0.9), inset 0 0 30px rgba(0, 0, 0, 0.7); }
-        }
-
-        .welcome-logo {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 40px;
-            filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.6));
-            animation: logoPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.6)); }
-            50% { filter: drop-shadow(0 0 40px rgba(255, 102, 0, 0.9)); }
-        }
-
-        @keyframes textPulse {
-            0%, 100% { text-shadow: 0 0 20px rgba(255, 102, 0, 0.8), 0 0 40px rgba(255, 102, 0, 0.4); }
-            50% { text-shadow: 0 0 30px rgba(255, 102, 0, 1), 0 0 60px rgba(255, 102, 0, 0.6); }
-        }
-
-        .welcome-subtitle {
-            font-size: 24px;
-            color: #ccc;
-            margin-bottom: 40px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
-        }
-
-        .enter-button {
-            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
-            border: 2px solid #ff8533;
-            color: #fff;
-            font-size: 16px;
-            padding: 12px 40px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .enter-button:hover {
-            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        .enter-button:active {
-            transform: scale(1.05);
-        }
-
-        .welcome-overlay.hidden {
-            animation: fadeOut 0.5s ease-out forwards;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
         }
 
         .container {
@@ -297,6 +200,33 @@
             gap: 25px;
         }
 
+        .control-btn {
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            border: 3px solid #ff8533;
+            color: #fff;
+            font-size: 32px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 102, 0, 0.3);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 102, 0, 0.6);
+        }
+
+        .control-btn:active {
+            transform: scale(1.05);
+        }
+
         .progress-control {
             display: flex;
             flex-direction: column;
@@ -343,33 +273,6 @@
             color: #aaa;
             font-size: 12px;
             letter-spacing: 1px;
-        }
-
-        .control-btn {
-            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
-            border: 3px solid #ff8533;
-            color: #fff;
-            font-size: 32px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 102, 0, 0.3);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .control-btn:hover {
-            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 102, 0, 0.6);
-        }
-
-        .control-btn:active {
-            transform: scale(1.05);
         }
 
         .volume-control {
@@ -439,29 +342,6 @@
             padding: 30px 40px;
             max-width: 880px;
             margin: 0 auto;
-        }
-
-        .welcome-section {
-            background: #2a2a2a;
-            border: 2px solid #444;
-            border-radius: 8px;
-            padding: 25px 30px;
-            margin-bottom: 30px;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .welcome-section h1 {
-            color: #ff6600;
-            font-size: 32px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .welcome-section p {
-            line-height: 1.6;
-            font-size: 15px;
         }
 
         .featured-image {
@@ -574,30 +454,6 @@
             margin-top: 15px;
         }
 
-        .info-box {
-            background: linear-gradient(to bottom, #333 0%, #222 100%);
-            border: 2px solid #555;
-            border-radius: 5px;
-            padding: 25px 30px;
-            margin: 20px 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        .info-box h2 {
-            color: #ff6600;
-            font-size: 24px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ff6600;
-            padding-bottom: 8px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .info-box p {
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
         footer {
             background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
             padding: 20px;
@@ -645,42 +501,12 @@
             margin: 5px 0;
             letter-spacing: 0.5px;
         }
-
-        .button {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
-            border: 1px solid #ff8533;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s;
-        }
-
-        .button:hover {
-            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
-            box-shadow: 0 5px 12px rgba(255, 102, 0, 0.4);
-            transform: translateY(-2px);
-        }
     </style>
     
     <!-- Google Fonts for Gamer Aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Welcome Screen Overlay -->
-    <div id="welcomeScreen" class="welcome-overlay">
-        <div class="welcome-content">
-            <img src="images/jds logo.gif" alt="JDS Logo" class="welcome-logo">
-            <button id="enterBtn" class="enter-button">ENTER</button>
-        </div>
-    </div>
-
     <div class="container">
         <header>
             <img src="images/jds logo.gif" alt="JDS Logo" class="logo">
@@ -698,7 +524,7 @@
 
         <div class="audio-controls">
             <div class="audio-player">
-                <div class="now-playing">Now Playing: Jerk Craft - Brando Industries</div>
+                <div class="now-playing">Now Playing: [SONG NAME] - [ARTIST]</div>
                 <div class="player-controls">
                     <button id="playPauseBtn" class="control-btn">⏸</button>
                     <div class="progress-control">
@@ -714,189 +540,38 @@
         </div>
 
         <audio id="bgMusic" loop>
-            <source src="sounds/jerk-craft.mp3" type="audio/mpeg">
+            <source src="sounds/[YOUR-SONG-FILE].mp3" type="audio/mpeg">
         </audio>
 
         <div class="content">
             <div class="featured-image">
-                <h2 class="featured-title">What Da Dog Doin?</h2>
+                <h2 class="featured-title">[IMAGE TITLE]</h2>
                 <div class="title-divider"></div>
-                <img src="images/juice-pic.png" alt="Featured Juice Picture">
+                <img src="images/[YOUR-IMAGE].png" alt="Featured Image">
             </div>
 
             <div class="video-carousel">
                 <button class="carousel-arrow left-arrow" id="prevBtn" disabled>◀</button>
                 
                 <div class="video-container-carousel">
-                    <div class="carousel-slide active" data-video-id="kkMJb0nVsDY">
+                    <div class="carousel-slide active" data-video-id="[VIDEO_ID_1]">
                         <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p class="video-caption">average dravec user</p>
+                        <p class="video-caption">[caption 1]</p>
                     </div>
                     
-                    <div class="carousel-slide" data-video-id="aJvRNaZnl2I">
+                    <div class="carousel-slide" data-video-id="[VIDEO_ID_2]">
                         <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p class="video-caption">ninja you can't say that dude</p>
+                        <p class="video-caption">[caption 2]</p>
                     </div>
                     
-                    <div class="carousel-slide" data-video-id="ZsMo3b_5fS8">
+                    <div class="carousel-slide" data-video-id="[VIDEO_ID_3]">
                         <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p class="video-caption">on god</p>
+                        <p class="video-caption">[caption 3]</p>
                     </div>
                 </div>
                 
                 <button class="carousel-arrow right-arrow" id="nextBtn">▶</button>
             </div>
-
-            <script>
-                // Welcome screen
-                const welcomeScreen = document.getElementById('welcomeScreen');
-                const enterBtn = document.getElementById('enterBtn');
-
-                enterBtn.addEventListener('click', () => {
-                    welcomeScreen.classList.add('hidden');
-                    setTimeout(() => {
-                        welcomeScreen.style.display = 'none';
-                    }, 500);
-                });
-
-                // Video carousel with lazy loading
-                let currentSlide = 0;
-                const slides = document.querySelectorAll('.carousel-slide');
-                const totalSlides = slides.length;
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-
-                function loadVideo(slide) {
-                    const iframe = slide.querySelector('iframe');
-                    const videoId = slide.getAttribute('data-video-id');
-                    if (videoId && videoId !== 'undefined' && videoId !== 'null') {
-                        iframe.src = `https://www.youtube.com/embed/${videoId}`;
-                    }
-                }
-
-                function unloadVideo(slide) {
-                    const iframe = slide.querySelector('iframe');
-                    iframe.src = '';
-                }
-
-                function showSlide(n) {
-                    // Unload previous video
-                    slides.forEach((slide, index) => {
-                        if (index !== n) {
-                            slide.classList.remove('active');
-                            unloadVideo(slide);
-                        }
-                    });
-                    
-                    // Load and show current video
-                    slides[n].classList.add('active');
-                    loadVideo(slides[n]);
-                    
-                    // Disable/enable arrows based on position
-                    prevBtn.disabled = (n === 0);
-                    nextBtn.disabled = (n === totalSlides - 1);
-                    
-                    // Visual styling for disabled state
-                    if (prevBtn.disabled) {
-                        prevBtn.style.opacity = '0.3';
-                        prevBtn.style.cursor = 'not-allowed';
-                    } else {
-                        prevBtn.style.opacity = '1';
-                        prevBtn.style.cursor = 'pointer';
-                    }
-                    
-                    if (nextBtn.disabled) {
-                        nextBtn.style.opacity = '0.3';
-                        nextBtn.style.cursor = 'not-allowed';
-                    } else {
-                        nextBtn.style.opacity = '1';
-                        nextBtn.style.cursor = 'pointer';
-                    }
-                }
-
-                prevBtn.addEventListener('click', () => {
-                    if (currentSlide > 0) {
-                        currentSlide--;
-                        showSlide(currentSlide);
-                    }
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    if (currentSlide < totalSlides - 1) {
-                        currentSlide++;
-                        showSlide(currentSlide);
-                    }
-                });
-
-                // Initialize - load first video only
-                showSlide(currentSlide);
-            </script>
-
-            <script>
-                // Audio player controls
-                const audio = document.getElementById('bgMusic');
-                const playPauseBtn = document.getElementById('playPauseBtn');
-                const volumeSlider = document.getElementById('volumeSlider');
-                const volumeValue = document.querySelector('.volume-value');
-                const progressSlider = document.getElementById('progressSlider');
-                const currentTimeDisplay = document.getElementById('currentTime');
-                const durationDisplay = document.getElementById('duration');
-
-                // Set initial volume to 25%
-                audio.volume = 0.25;
-
-                // Format time helper
-                function formatTime(seconds) {
-                    const mins = Math.floor(seconds / 60);
-                    const secs = Math.floor(seconds % 60);
-                    return `${mins}:${secs.toString().padStart(2, '0')}`;
-                }
-
-                // Update duration when metadata loads
-                audio.addEventListener('loadedmetadata', () => {
-                    progressSlider.max = audio.duration;
-                    durationDisplay.textContent = formatTime(audio.duration);
-                });
-
-                // Update progress slider as song plays
-                audio.addEventListener('timeupdate', () => {
-                    if (!progressSlider.matches(':active')) {
-                        progressSlider.value = audio.currentTime;
-                    }
-                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-                });
-
-                // Seek when progress slider changes
-                progressSlider.addEventListener('input', (e) => {
-                    audio.currentTime = e.target.value;
-                });
-
-                // Auto-play when page loads (with error handling for browsers that block autoplay)
-                window.addEventListener('load', () => {
-                    audio.play().catch(err => {
-                        console.log('Autoplay prevented. User must interact with page first.');
-                        playPauseBtn.textContent = '▶';
-                    });
-                });
-
-                // Play/Pause button
-                playPauseBtn.addEventListener('click', () => {
-                    if (audio.paused) {
-                        audio.play();
-                        playPauseBtn.textContent = '⏸';
-                    } else {
-                        audio.pause();
-                        playPauseBtn.textContent = '▶';
-                    }
-                });
-
-                // Volume slider
-                volumeSlider.addEventListener('input', (e) => {
-                    const volume = e.target.value / 100;
-                    audio.volume = volume;
-                    volumeValue.textContent = e.target.value + '%';
-                });
-            </script>
         </div>
 
         <footer>
@@ -920,5 +595,145 @@
             <p>&copy; 2025 Brando Industries. All Rights Reserved.</p>
         </footer>
     </div>
+
+    <script>
+        // Video carousel with lazy loading
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function loadVideo(slide) {
+            const iframe = slide.querySelector('iframe');
+            const videoId = slide.getAttribute('data-video-id');
+            if (videoId && videoId !== 'undefined' && videoId !== 'null') {
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+            }
+        }
+
+        function unloadVideo(slide) {
+            const iframe = slide.querySelector('iframe');
+            iframe.src = '';
+        }
+
+        function showSlide(n) {
+            // Unload previous video
+            slides.forEach((slide, index) => {
+                if (index !== n) {
+                    slide.classList.remove('active');
+                    unloadVideo(slide);
+                }
+            });
+            
+            // Load and show current video
+            slides[n].classList.add('active');
+            loadVideo(slides[n]);
+            
+            // Disable/enable arrows based on position
+            prevBtn.disabled = (n === 0);
+            nextBtn.disabled = (n === totalSlides - 1);
+            
+            // Visual styling for disabled state
+            if (prevBtn.disabled) {
+                prevBtn.style.opacity = '0.3';
+                prevBtn.style.cursor = 'not-allowed';
+            } else {
+                prevBtn.style.opacity = '1';
+                prevBtn.style.cursor = 'pointer';
+            }
+            
+            if (nextBtn.disabled) {
+                nextBtn.style.opacity = '0.3';
+                nextBtn.style.cursor = 'not-allowed';
+            } else {
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Initialize - load first video only
+        showSlide(currentSlide);
+    </script>
+
+    <script>
+        // Audio player controls
+        const audio = document.getElementById('bgMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeValue = document.querySelector('.volume-value');
+        const progressSlider = document.getElementById('progressSlider');
+        const currentTimeDisplay = document.getElementById('currentTime');
+        const durationDisplay = document.getElementById('duration');
+
+        // Set initial volume to 25%
+        audio.volume = 0.25;
+
+        // Format time helper
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Update duration when metadata loads
+        audio.addEventListener('loadedmetadata', () => {
+            progressSlider.max = audio.duration;
+            durationDisplay.textContent = formatTime(audio.duration);
+        });
+
+        // Update progress slider as song plays
+        audio.addEventListener('timeupdate', () => {
+            if (!progressSlider.matches(':active')) {
+                progressSlider.value = audio.currentTime;
+            }
+            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        });
+
+        // Seek when progress slider changes
+        progressSlider.addEventListener('input', (e) => {
+            audio.currentTime = e.target.value;
+        });
+
+        // Auto-play when page loads (with error handling for browsers that block autoplay)
+        window.addEventListener('load', () => {
+            audio.play().catch(err => {
+                console.log('Autoplay prevented. User must interact with page first.');
+                playPauseBtn.textContent = '▶';
+            });
+        });
+
+        // Play/Pause button
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        });
+
+        // Volume slider
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value / 100;
+            audio.volume = volume;
+            volumeValue.textContent = e.target.value + '%';
+        });
+    </script>
 </body>
 </html>
