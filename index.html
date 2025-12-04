@@ -16,6 +16,102 @@
             font-family: 'Orbitron', 'Rajdhani', 'Exo 2', Arial, sans-serif;
             background: #1a1a1a url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxY6I4AAAAAElFTkSuQmCC') repeat;
             color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulseBackground 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseBackground {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .welcome-content {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(26, 26, 26, 0.9);
+            border: 4px solid #ff6600;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: welcomeGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes welcomeGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 102, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(255, 102, 0, 0.9), inset 0 0 30px rgba(0, 0, 0, 0.7); }
+        }
+
+        .welcome-title {
+            font-size: 72px;
+            color: #ff6600;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 102, 0, 0.8), 0 0 40px rgba(255, 102, 0, 0.4);
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 102, 0, 0.8), 0 0 40px rgba(255, 102, 0, 0.4); }
+            50% { text-shadow: 0 0 30px rgba(255, 102, 0, 1), 0 0 60px rgba(255, 102, 0, 0.6); }
+        }
+
+        .welcome-subtitle {
+            font-size: 24px;
+            color: #ccc;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
+        }
+
+        .enter-button {
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            border: 3px solid #ff8533;
+            color: #fff;
+            font-size: 24px;
+            padding: 20px 60px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 102, 0, 0.4);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .enter-button:hover {
+            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255, 102, 0, 0.8);
+        }
+
+        .enter-button:active {
+            transform: scale(1.05);
+        }
+
+        .welcome-overlay.hidden {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
 
         .container {
@@ -176,10 +272,75 @@
             padding: 25px 30px;
             box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             width: fit-content;
+        }
+
+        .now-playing {
+            color: #ff6600;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .progress-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 300px;
+        }
+
+        .progress-slider {
+            width: 300px;
+            height: 8px;
+            background: #333;
+            border-radius: 5px;
+            outline: none;
+            border: 2px solid #ff6600;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .progress-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #ff8533;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 8px rgba(255, 102, 0, 0.4);
+        }
+
+        .progress-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #ff8533;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 8px rgba(255, 102, 0, 0.4);
+        }
+
+        .time-display {
+            color: #aaa;
+            font-size: 12px;
+            letter-spacing: 1px;
         }
 
         .control-btn {
@@ -483,6 +644,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Welcome Screen Overlay -->
+    <div id="welcomeScreen" class="welcome-overlay">
+        <div class="welcome-content">
+            <h1 class="welcome-title">JUICEDATSHIT</h1>
+            <div class="welcome-subtitle">Welcome to the Zone</div>
+            <button id="enterBtn" class="enter-button">ENTER THE SITE</button>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <img src="images/jds logo.gif" alt="JDS Logo" class="logo">
@@ -499,11 +669,18 @@
 
         <div class="audio-controls">
             <div class="audio-player">
-                <button id="playPauseBtn" class="control-btn">⏸</button>
-                <div class="volume-control">
-                    <span class="volume-label">🔊</span>
-                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="25">
-                    <span class="volume-value">25%</span>
+                <div class="now-playing">Now Playing: Jerk Craft - Brando Industries</div>
+                <div class="player-controls">
+                    <button id="playPauseBtn" class="control-btn">⏸</button>
+                    <div class="progress-control">
+                        <input type="range" id="progressSlider" class="progress-slider" min="0" max="100" value="0">
+                        <div class="time-display"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></div>
+                    </div>
+                    <div class="volume-control">
+                        <span class="volume-label">🔊</span>
+                        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="25">
+                        <span class="volume-value">25%</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -523,18 +700,18 @@
                 <button class="carousel-arrow left-arrow" id="prevBtn" disabled>◀</button>
                 
                 <div class="video-container-carousel">
-                    <div class="carousel-slide active">
-                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/kkMJb0nVsDY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-slide active" data-video-id="kkMJb0nVsDY">
+                        <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <p class="video-caption">average dravec user</p>
                     </div>
                     
-                    <div class="carousel-slide">
-                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/aJvRNaZnl2I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-slide" data-video-id="aJvRNaZnl2I">
+                        <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <p class="video-caption">ninja you can't say that dude</p>
                     </div>
                     
-                    <div class="carousel-slide">
-                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/Cheesur_shits_his_pants" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="carousel-slide" data-video-id="https://www.youtube.com/watch?v=ZsMo3b_5fS8">
+                        <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <p class="video-caption">on god</p>
                     </div>
                 </div>
@@ -543,15 +720,49 @@
             </div>
 
             <script>
+                // Welcome screen
+                const welcomeScreen = document.getElementById('welcomeScreen');
+                const enterBtn = document.getElementById('enterBtn');
+
+                enterBtn.addEventListener('click', () => {
+                    welcomeScreen.classList.add('hidden');
+                    setTimeout(() => {
+                        welcomeScreen.style.display = 'none';
+                    }, 500);
+                });
+
+                // Video carousel with lazy loading
                 let currentSlide = 0;
                 const slides = document.querySelectorAll('.carousel-slide');
                 const totalSlides = slides.length;
                 const prevBtn = document.getElementById('prevBtn');
                 const nextBtn = document.getElementById('nextBtn');
 
+                function loadVideo(slide) {
+                    const iframe = slide.querySelector('iframe');
+                    const videoId = slide.getAttribute('data-video-id');
+                    if (videoId && !iframe.src) {
+                        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                    }
+                }
+
+                function unloadVideo(slide) {
+                    const iframe = slide.querySelector('iframe');
+                    iframe.src = '';
+                }
+
                 function showSlide(n) {
-                    slides.forEach(slide => slide.classList.remove('active'));
+                    // Unload previous video
+                    slides.forEach((slide, index) => {
+                        if (index !== n) {
+                            slide.classList.remove('active');
+                            unloadVideo(slide);
+                        }
+                    });
+                    
+                    // Load and show current video
                     slides[n].classList.add('active');
+                    loadVideo(slides[n]);
                     
                     // Disable/enable arrows based on position
                     prevBtn.disabled = (n === 0);
@@ -589,7 +800,7 @@
                     }
                 });
 
-                // Initialize
+                // Initialize - load first video only
                 showSlide(currentSlide);
             </script>
 
@@ -599,9 +810,38 @@
                 const playPauseBtn = document.getElementById('playPauseBtn');
                 const volumeSlider = document.getElementById('volumeSlider');
                 const volumeValue = document.querySelector('.volume-value');
+                const progressSlider = document.getElementById('progressSlider');
+                const currentTimeDisplay = document.getElementById('currentTime');
+                const durationDisplay = document.getElementById('duration');
 
                 // Set initial volume to 25%
                 audio.volume = 0.25;
+
+                // Format time helper
+                function formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs.toString().padStart(2, '0')}`;
+                }
+
+                // Update duration when metadata loads
+                audio.addEventListener('loadedmetadata', () => {
+                    progressSlider.max = audio.duration;
+                    durationDisplay.textContent = formatTime(audio.duration);
+                });
+
+                // Update progress slider as song plays
+                audio.addEventListener('timeupdate', () => {
+                    if (!progressSlider.matches(':active')) {
+                        progressSlider.value = audio.currentTime;
+                    }
+                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
+                });
+
+                // Seek when progress slider changes
+                progressSlider.addEventListener('input', (e) => {
+                    audio.currentTime = e.target.value;
+                });
 
                 // Auto-play when page loads (with error handling for browsers that block autoplay)
                 window.addEventListener('load', () => {
