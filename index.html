@@ -64,6 +64,20 @@
             animation: textPulse 2s ease-in-out infinite;
         }
 
+        .welcome-logo {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.6));
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.6)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 102, 0, 0.9)); }
+        }
+
         @keyframes textPulse {
             0%, 100% { text-shadow: 0 0 20px rgba(255, 102, 0, 0.8), 0 0 40px rgba(255, 102, 0, 0.4); }
             50% { text-shadow: 0 0 30px rgba(255, 102, 0, 1), 0 0 60px rgba(255, 102, 0, 0.6); }
@@ -258,7 +272,6 @@
             background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
             padding: 20px;
             margin: 0;
-            border-bottom: 2px solid #ff6600;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: center;
@@ -286,7 +299,7 @@
             text-align: center;
             text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            width: 100%;
         }
 
         .player-controls {
@@ -374,18 +387,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-        }
-
-        .volume-label {
-            font-size: 28px;
-            color: #ff6600;
-            text-shadow: 0 0 10px rgba(255, 102, 0, 0.6);
+            gap: 8px;
         }
 
         .volume-slider {
             width: 200px;
-            height: 10px;
+            height: 8px;
             background: #333;
             border-radius: 5px;
             outline: none;
@@ -647,7 +654,7 @@
     <!-- Welcome Screen Overlay -->
     <div id="welcomeScreen" class="welcome-overlay">
         <div class="welcome-content">
-            <h1 class="welcome-title">JUICEDATSHIT</h1>
+            <img src="images/jds logo.gif" alt="JDS Logo" class="welcome-logo">
             <div class="welcome-subtitle">Welcome to the Zone</div>
             <button id="enterBtn" class="enter-button">ENTER THE SITE</button>
         </div>
@@ -677,7 +684,6 @@
                         <div class="time-display"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></div>
                     </div>
                     <div class="volume-control">
-                        <span class="volume-label">🔊</span>
                         <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="25">
                         <span class="volume-value">25%</span>
                     </div>
@@ -710,7 +716,7 @@
                         <p class="video-caption">ninja you can't say that dude</p>
                     </div>
                     
-                    <div class="carousel-slide" data-video-id="https://www.youtube.com/watch?v=ZsMo3b_5fS8">
+                    <div class="carousel-slide" data-video-id="ZsMo3b_5fS8">
                         <iframe width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <p class="video-caption">on god</p>
                     </div>
@@ -741,7 +747,7 @@
                 function loadVideo(slide) {
                     const iframe = slide.querySelector('iframe');
                     const videoId = slide.getAttribute('data-video-id');
-                    if (videoId && !iframe.src) {
+                    if (videoId && videoId !== 'undefined' && videoId !== 'null') {
                         iframe.src = `https://www.youtube.com/embed/${videoId}`;
                     }
                 }
