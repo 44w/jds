@@ -127,10 +127,10 @@
             left: 50%;
             width: 0;
             height: 3px;
-            background: linear-gradient(90deg, #666, #888, #666);
+            background: linear-gradient(90deg, #000, #222, #000);
             transform: translateX(-50%);
             transition: width 0.4s ease;
-            box-shadow: 0 0 10px #666;
+            box-shadow: 0 0 10px #000;
         }
 
         nav ul li a:hover::after {
@@ -150,12 +150,132 @@
             left: 10px;
             opacity: 0;
             transition: all 0.3s ease;
-            color: #777;
+            color: #000;
         }
 
         nav ul li a:hover::before {
             opacity: 1;
             left: 15px;
+        }
+
+        .audio-controls {
+            background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 20px;
+            margin: 0;
+            border-bottom: 2px solid #ff6600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .audio-player {
+            background: #1a1a1a;
+            border: 3px solid #ff6600;
+            border-radius: 15px;
+            padding: 25px 30px;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            width: fit-content;
+        }
+
+        .control-btn {
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            border: 3px solid #ff8533;
+            color: #fff;
+            font-size: 32px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 102, 0, 0.3);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 102, 0, 0.6);
+        }
+
+        .control-btn:active {
+            transform: scale(1.05);
+        }
+
+        .volume-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .volume-label {
+            font-size: 28px;
+            color: #ff6600;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.6);
+        }
+
+        .volume-slider {
+            width: 200px;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            outline: none;
+            border: 2px solid #ff6600;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid #ff8533;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 102, 0, 0.4);
+            transition: all 0.3s;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.9);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(to bottom, #ff6600 0%, #cc5200 100%);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid #ff8533;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 102, 0, 0.4);
+            transition: all 0.3s;
+        }
+
+        .volume-slider::-moz-range-thumb:hover {
+            background: linear-gradient(to bottom, #ff8533 0%, #ff6600 100%);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.9);
+        }
+
+        .volume-value {
+            color: #ff6600;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+            letter-spacing: 1px;
         }
 
         .content {
@@ -377,6 +497,21 @@
             </ul>
         </nav>
 
+        <div class="audio-controls">
+            <div class="audio-player">
+                <button id="playPauseBtn" class="control-btn">⏸</button>
+                <div class="volume-control">
+                    <span class="volume-label">🔊</span>
+                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="25">
+                    <span class="volume-value">25%</span>
+                </div>
+            </div>
+        </div>
+
+        <audio id="bgMusic" loop>
+            <source src="sounds/jerk-craft.mp3" type="audio/mpeg">
+        </audio>
+
         <div class="content">
             <div class="featured-image">
                 <h2 class="featured-title">What Da Dog Doin?</h2>
@@ -399,7 +534,7 @@
                     </div>
                     
                     <div class="carousel-slide">
-                        <iframe width="100%" height="400" src="https://www.youtube.com/watch?v=ZsMo3b_5fS8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/Cheesur_shits_his_pants" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <p class="video-caption">on god</p>
                     </div>
                 </div>
@@ -456,6 +591,43 @@
 
                 // Initialize
                 showSlide(currentSlide);
+            </script>
+
+            <script>
+                // Audio player controls
+                const audio = document.getElementById('bgMusic');
+                const playPauseBtn = document.getElementById('playPauseBtn');
+                const volumeSlider = document.getElementById('volumeSlider');
+                const volumeValue = document.querySelector('.volume-value');
+
+                // Set initial volume to 25%
+                audio.volume = 0.25;
+
+                // Auto-play when page loads (with error handling for browsers that block autoplay)
+                window.addEventListener('load', () => {
+                    audio.play().catch(err => {
+                        console.log('Autoplay prevented. User must interact with page first.');
+                        playPauseBtn.textContent = '▶';
+                    });
+                });
+
+                // Play/Pause button
+                playPauseBtn.addEventListener('click', () => {
+                    if (audio.paused) {
+                        audio.play();
+                        playPauseBtn.textContent = '⏸';
+                    } else {
+                        audio.pause();
+                        playPauseBtn.textContent = '▶';
+                    }
+                });
+
+                // Volume slider
+                volumeSlider.addEventListener('input', (e) => {
+                    const volume = e.target.value / 100;
+                    audio.volume = volume;
+                    volumeValue.textContent = e.target.value + '%';
+                });
             </script>
         </div>
 
